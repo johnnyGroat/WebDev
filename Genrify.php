@@ -3,25 +3,31 @@
         <?php include 'header.html';?>
     </head>
     <body>
-    <h3>Genrify</h3>
-        <div class="content-body">
-            <span>
-                I want to do some Genre analysis on some of my playlists and maybe import some visualization libraries and do some cool stuff with that.  I saw some 'Mood analyzer' stuff in their app store, but I don't know how they work, so I'll just do it myself
-            </span>    
-        </div>
-        <div class="content-body">
-            <span style="padding-right: 15px;">Search for an artist</span><input type="text" id="_artistSearch" />
-            <button id="_artistSearchSubmit">Search</button>
-        </div>
-        <div class="content-body">
-            <select id="_artistSearchResult" size="10" style="width:60%;">
+        <div class="body-content">
+            <div class="container-fluid">
+                <div class="panel panel-default">
+                    <div class="panel-heading background-gradient">
+                        Genrify
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            I want to do some Genre analysis on some of my playlists and maybe import some visualization libraries and do some cool stuff with that.  I saw some 'Mood analyzer' stuff in their app store, but I don't know how they work, so I'll just do it myself
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <span style="padding-right: 15px;">Search for an artist</span><input type="text" id="_artistSearch" />
+                        <button id="_artistSearchSubmit">Search</button>
+                    </div>
+                    <div class="panel-body">
+                        <select id="_artistSearchResult" size="10" style="width:60%;">
 
-            </select>
-        </div>
-        <div class="content-body">
-            <ul id="_genreList">
-                
-            </ul>
+                        </select>
+                        <ul id="_genreList">
+                            
+                        </ul>
+                    </div>
+                </div>            
+            </div>
         </div>
         <script type="text/javascript">
             function SpotifySearchSubmit(searchTerm) {
