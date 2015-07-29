@@ -73,6 +73,9 @@ body {
 .panel-default > .panel-heading {
 	color: #3A3A3A;
 }
+.panel-body {
+	color: #3A3A3A;
+}
 
 /* full overrides */
 .navbar .nav>li>a:focus, .navbar .nav>li>a:hover {
