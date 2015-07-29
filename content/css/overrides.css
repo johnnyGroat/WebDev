@@ -26,6 +26,8 @@ body {
 }
 .navbar-item {
 	padding-bottom: 3px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 .navbar-item:after {
 	content: '';
@@ -50,9 +52,21 @@ body {
 	margin-right: 10%;
 	margin-left:10%;
 }
+/* body content */
+.body-content {
+	margin-left: 10%;
+	margin-right: 10%;
+	padding-left: 30px;
+}
+
 /* full overrides */
 .navbar .nav>li>a:focus, .navbar .nav>li>a:hover {
 	color: #F4F4F4;
+	background: #3A3A3A;
+}
+.navbar .nav > li >a {
+	padding-left: 0px;
+	padding-right: 0px;
 }
 .navbar .nav li.dropdown.open>.dropdown-toggle {
 	color: #F4F4F4;
@@ -77,4 +91,7 @@ body {
 }
 .dropdown-menu {
 	margin: 0px 0px 0px -75px;
+}
+.panel-default {
+	max-width: 800px;
 }
