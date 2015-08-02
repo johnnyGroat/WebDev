@@ -9,17 +9,15 @@
         width: 800,
         height: 600,
         navigation: {
-        	active: true,
+        	active: false,
         	effect: "fade"
         },
         pagination: {
         	active: false
         },
         play: {
-          active: true,
-          auto: true,
-          interval: 6000,
-          swap: true
+          active: false
+
         }
       });
     });
@@ -28,11 +26,6 @@
 			#_about-slider {
 				display:none;
 			}
-			a.slidesjs-next {
-			  background: url(glyphicon-circle-arrow-left);
-		      margin-right:10px;
-		      background-position: -12px 0;
-		    }
 		</style>
 	</head>
 	<body>
@@ -65,6 +58,10 @@
 							<img src="content/images/about/rangersRedwings.jpg">
 							<img src="content/images/about/belmont.jpg">
 							<img src="content/images/about/baldmtnsmall.png">
+							<span class="slidesjs-previous slidesjs-navigation glyphicon glyphicon-chevron-left" style="padding-top:10px;" aria-hidden="true">
+							</span>
+							<span class="slidesjs-next slidesjs-navigation glyphicon glyphicon-chevron-right" style="padding-top:10px;" aria-hidden="true">
+							</span>
 						</div>
 					</div>
 				</div>

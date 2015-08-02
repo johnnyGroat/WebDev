@@ -113,3 +113,11 @@ body {
 .panel-default {
 	max-width: 800px;
 }
+
+/* slides overrides */
+.slidesjs-navigation {
+	cursor: pointer;
+}
+.slidesjs-navigation:hover {
+	color: #A2A2A2;
+}
