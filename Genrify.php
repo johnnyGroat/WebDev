@@ -61,7 +61,7 @@
                 var artistsHtml = '';
                 var genreArray = [];
                 for (var i = 0; i < spotifyArtists.length; i++) {
-                    artistsHtml += '<option value="'+ spotifyArtists[i].name + '">' + spotifyArtists[i].name + '</option>';
+                    artistsHtml += '<option value="'+ spotifyArtists[i].id + '">' + spotifyArtists[i].name + '</option>';
                     for (var j = 0; j < spotifyArtists[i].genres.length; j++) {
                         genreArray.push(spotifyArtists[i].genres[j]);
                     }
