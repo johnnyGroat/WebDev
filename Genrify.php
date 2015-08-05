@@ -15,12 +15,12 @@
                         </div>
                     </div>
                     <div class="panel-body">
-                        <span style="padding-right: 15px;">Search for an artist</span><input type="text" id="_artistSearch" />
+                        <span style="padding-right: 15px;">Search for an artist</span>
+                        <input type="text" id="_artistSearch" />
                         <button id="_artistSearchSubmit">Search</button>
                     </div>
                     <div class="panel-body">
                         <select id="_artistSearchResult" size="10" style="width:60%;">
-
                         </select>
                         <ul id="_genreList">
                             
@@ -46,9 +46,14 @@
 
                     },
                     error: function (data) {
-                        var bigD = data;
-                    }
+                   }
                 });
+            };
+
+            function SpotifyArtistSearch(searchTerm) {
+                var spotifySearchType = 'artist';
+                var artistSearch = searchTerm.replace(' ', '+');
+
             };
 
             function BuildSpotifyArtistHtml(spotifyArtists) {
@@ -62,7 +67,6 @@
                     }
                 }
 
-
                 var genreHtml = '';
                 for (var i = 0; i < genreArray.length; i++) {
                     genreHtml += '<li>' + genreArray[i] + '</li>';
@@ -73,20 +77,10 @@
 
             };
 
-            $('#_artistSearch').change(function () {
-                if(this.value.length > 2)
-                {
-                    debugger;
-                    
-                    var artists = SpotifySearchSubmit(this.value).done(BuildSpotifyArtistHtml(result));// var sendQuery = "now";
-                    BuildSpotifyArtistHtml(artists);
-                }
-            });
-
             $('#_artistSearchSubmit').on('click', function () {
                 var artistQuery = $('#_artistSearch').val();
-
-                BuildSpotifyArtistHtml(SpotifySearchSubmit(artistQuery));
+                var res = SpotifySearchSubmit(artistQuery);
+                BuildSpotifyArtistHtml(res.responseJSON.artists.items);
 
             });
         </script>
