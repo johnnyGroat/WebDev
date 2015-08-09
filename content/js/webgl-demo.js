@@ -6,6 +6,18 @@ var shaderProgram;
 var vertexPositionAttribute;
 var perspectiveMatrix;
 
+var lastSquareUpdateTime;
+
+var squareRotation = 0.0;
+
+var squareXOffset = 0.0;
+var squareYOffset = 0.0;
+var squareZOffset = 0.0;
+
+var xIncValue = 0.2;
+var yIncValue = -0.4;
+var zIncValue = 0.3;
+
 //
 // start
 //
@@ -136,7 +148,11 @@ function drawScene() {
   // drawing the square.
   
   mvTranslate([-0.0, 0.0, -6.0]);
+  mvPushMatrix();
+  mvRotate(squareRotation, [1, 0, 1]);
   
+
+
   // Draw the square by binding the array buffer to the square's vertices
   // array, setting attributes, and pushing it to GL.
   
@@ -148,6 +164,19 @@ function drawScene() {
 
   setMatrixUniforms();
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+
+var currentTime = (new Date).getTime();
+
+  if (lastSquareUpdateTime) {
+    var delta = currentTime - lastSquareUpdateTime;
+    
+    squareRotation += (30 * delta) / 1000.0;
+  }
+  
+  lastSquareUpdateTime = currentTime;
+
+  mvPopMatrix();
 }
 
 //
@@ -264,4 +293,32 @@ function setMatrixUniforms() {
 
   var mvUniform = gl.getUniformLocation(shaderProgram, "uMVMatrix");
   gl.uniformMatrix4fv(mvUniform, false, new Float32Array(mvMatrix.flatten()));
+}
+
+
+var mvMatrixStack = [];
+
+function mvPushMatrix(m) {
+  if (m) {
+    mvMatrixStack.push(m.dup());
+    mvMatrix = m.dup();
+  } else {
+    mvMatrixStack.push(mvMatrix.dup());
+  }
+}
+
+function mvPopMatrix() {
+  if (!mvMatrixStack.length) {
+    throw("Can't pop from an empty matrix stack.");
+  }
+  
+  mvMatrix = mvMatrixStack.pop();
+  return mvMatrix;
+}
+
+function mvRotate(angle, v) {
+  var inRadians = angle * Math.PI / 180.0;
+  
+  var m = Matrix.Rotation(inRadians, $V([v[0], v[1], v[2]])).ensure4x4();
+  multMatrix(m);
 }
